@@ -27,11 +27,12 @@
    A.第7题   B.第5题   D.第2题   B.第10题
 
 9. 已知”第1题与第6题的答案相同“与”第X题与第5题的答案相同“的真假性相反，那么X为：
-   A.第6题   B.第10题   D.第2题   B.第9题
+   A.6   B.10   D.2   B.9
 
 10. 在此10道题中，ABCD四个字母出现次数最多与最少的差为：
    A.3   B.2   C.4   D.1
 
+解答如下：
 
 ```javascript
 var util = require('./util');
@@ -146,3 +147,5 @@ console.log('结果：',ans);
 console.log('pass:',pass);
 console.log('停止，剩余',count-pass,'项');
 ```
+
+最终得到结果：'B', 'C', 'A', 'C', 'A', 'C', 'D', 'A', 'B', 'A'
