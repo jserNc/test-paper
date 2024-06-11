@@ -1,13 +1,15 @@
 // n 个答案全排列
-function permute(n,ABCD){
+function permute(n, ABCD) {
   var res = [];
   perRes = [];
 
-  return ((function(n){
+  return ((function (n) {
     var beginEle;
-    if (n < 1) {return}
+    if (n < 1) {
+      return
+    }
 
-    for(var i = 0,l = ABCD.length; i < l; i++){
+    for (var i = 0, l = ABCD.length; i < l; i++) {
       beginEle = ABCD[i];
       perRes.push(beginEle);
 
@@ -15,7 +17,7 @@ function permute(n,ABCD){
         res.push(perRes.slice());
       }
 
-      arguments.callee(n-1);
+      arguments.callee(n - 1);
       perRes.pop();
     }
 
@@ -25,27 +27,35 @@ function permute(n,ABCD){
 
 
 // 是否相邻
-function adjacent(a,b){
-  switch(a){
+function adjacent(a, b) {
+  switch (a) {
     case 'A':
-      if (b === 'B') {return true}
+      if (b === 'B') {
+        return true
+      }
       break;
     case 'B':
-      if (b === 'A' || b === 'C') {return true}
+      if (b === 'A' || b === 'C') {
+        return true
+      }
       break;
     case 'C':
-      if (b === 'B' || b === 'D') {return true}
+      if (b === 'B' || b === 'D') {
+        return true
+      }
       break;
     case 'D':
-      if (b === 'C') {return true}
+      if (b === 'C') {
+        return true
+      }
       break;
-    default :
+    default:
       return false;
   }
 }
 
 // 真假性相反
-function mutex(a,b){
+function mutex(a, b) {
   if (!!a === true && !!b === false) {
     return true
   } else if (!!a === false && !!b === true) {
@@ -54,47 +64,56 @@ function mutex(a,b){
   return false
 }
 
-// 4 个条件有且仅有一个正确
-function assert(exps){
+// 不满足：4 个条件有且仅有一个正确
+function assert(exps) {
   var trues = 0, l = exps.length;
   for (var i = 0; i < l; i++) {
     if (exps[i] === true) {
       trues++;
     }
   }
-  if (trues === 1) { return false}
+  if (trues === 1) {
+    return false
+  }
   return true;
 }
 
 // ABCD 各自出现的次数
-function timesForABCD(r){
-  var a = 0,b = 0,c = 0,d = 0;
-  for(var i = 0; i < 10; i++){
-    switch(r[i]){
+function timesForABCD(r) {
+  var a = 0,
+    b = 0,
+    c = 0,
+    d = 0;
+  for (var i = 0; i < 10; i++) {
+    switch (r[i]) {
       case 'A':
-        a++;break;
+        a++;
+        break;
       case 'B':
-        b++;break;
+        b++;
+        break;
       case 'C':
-        c++;break;
+        c++;
+        break;
       case 'D':
-        d++;break;
+        d++;
+        break;
     }
   }
 
   return {
-    'A' : a,
-    'B' : b,
-    'C' : c,
-    'D' : d,
-    'set' : [a,b,c,d]
+    'A': a,
+    'B': b,
+    'C': c,
+    'D': d,
+    'set': [a, b, c, d]
   }
 }
 
 // 出现最少的选项
-function minABCD(r,ABCD){
+function minABCD(r, ABCD) {
   var times = timesForABCD(r);
-  if(Math.min.apply(null,times.set) === times[ABCD]){
+  if (Math.min.apply(null, times.set) === times[ABCD]) {
     return true
   }
   return false;
@@ -109,4 +128,3 @@ module.exports = {
   timesForABCD: timesForABCD,
   minABCD: minABCD
 };
-
